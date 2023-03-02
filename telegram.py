@@ -7,7 +7,7 @@ import telepot
 from telepot.loop import MessageLoop
 
 
-MYLED = 26
+myled = 26
 
 fan = 19
 
@@ -28,9 +28,9 @@ GPIO.setwarnings(False)
 
 #MYLED
 
-GPIO.setup(MYLED, GPIO.OUT)
+GPIO.setup(myled, GPIO.OUT)
 
-GPIO.output(MYLED, 0) #Off initially
+GPIO.output(myled, 0) #Off initially
 
 #fan
 
@@ -59,18 +59,18 @@ def action(msg):
     command = msg['text']
 
 
-    print 'Received: %s' % command
+    print ('Received: %s' % command)
 
 
     if 'on' in command:
 
         message = "Turned on "
 
-        if 'MYLED' in command:
+        if 'myled' in command:
 
-            message = message + "MYLED "
+            message = message + "myled"
 
-            GPIO.output(MYLED, 1)
+            GPIO.output(myled, 1)
 
         if 'fan' in command:
 
@@ -94,7 +94,7 @@ def action(msg):
 
             message = message + "all "
 
-            GPIO.output(MYLED, 1)
+            GPIO.output(myled, 1)
 
             GPIO.output(fan, 1)
 
@@ -112,9 +112,9 @@ def action(msg):
 
         message = "Turned off "
 
-        if 'MYLED' in command:
+        if 'myled' in command:
 
-            message = message + "MYLED "
+            message = message + "myled"
 
             GPIO.output(MYLED, 0)
 
@@ -140,7 +140,7 @@ def action(msg):
 
             message = message + "all "
 
-            GPIO.output(MYLED, 0)
+            GPIO.output(myled, 0)
 
             GPIO.output(fan, 0)
 
@@ -156,14 +156,14 @@ def action(msg):
  
 
 
-telegram_bot = telepot.Bot('5614057556:AAEpUhVq2VtXmyPYbr-LWItO6voBxDWgqx8')
+telegram_bot = telepot.Bot('5521025255:AAGFFPP_X_iJzi3VC34yIHoNuZw5FEUkElU')
 
 print (telegram_bot.getMe())
 
 
 MessageLoop(telegram_bot, action).run_as_thread()
 
-print 'Code Unnati Home automation is Up and Running....'
+print ('Code Unnati Home automation is Up and Running....')
 
 
 while 1:
